@@ -1,0 +1,5 @@
+name: WaffleControllerBlockSpeak
+version: '1.0'
+main: io.github.stonley890.waffleControllerBlockSpeak.WaffleControllerBlockSpeak
+api-version: '1.21'
+authors: [ Stonley890 ]
