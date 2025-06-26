@@ -1,8 +1,7 @@
 package io.github.stonley890.waffleControllerBlockSpeak.commands.discord;
 
 import io.github.stonley890.waffleControllerBlockSpeak.Bot;
-import net.dv8tion.jda.api.audio.AudioReceiveHandler;
-import net.dv8tion.jda.api.audio.UserAudio;
+import io.github.stonley890.waffleControllerBlockSpeak.Headphones;
 import net.dv8tion.jda.api.entities.channel.concrete.VoiceChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
@@ -23,6 +22,7 @@ public class DiscordCommandJoin implements DiscordCommand {
 
     @Override
     public void onCommand(@NotNull SlashCommandInteractionEvent event) {
+
         if (!Bot.getBotMasters().contains(event.getUser().getIdLong())) {
             event.reply("User with ID " + event.getUser().getId() + " is not registered as a bot master. Execution aborted.").setEphemeral(true).queue();
             return;
@@ -41,6 +41,9 @@ public class DiscordCommandJoin implements DiscordCommand {
 
         AudioManager audioManager = channel.getGuild().getAudioManager();
         audioManager.openAudioConnection(channel);
+        Headphones headphones = new Headphones();
+        audioManager.setReceivingHandler(headphones);
+        Bot.setAudioManager(audioManager);
 
         event.reply("Success.").setEphemeral(true).queue();
     }

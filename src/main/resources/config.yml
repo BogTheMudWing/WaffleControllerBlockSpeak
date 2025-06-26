@@ -1,0 +1,6 @@
+botToken: "discord bot token here"
+chunkIterations: 2
+chunkEditGapTicks: 2
+immuneList:
+  - 505833634134228992
+invert: true
